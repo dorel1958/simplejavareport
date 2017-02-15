@@ -1,0 +1,93 @@
+<html>
+<body>
+<h2>Help</h2>
+<h3>To create a new report:</h3>
+
+<p>1. <font color="blue">File/New</font> will generate an empty report with 3 bands: pageHeader, detailBand and pageFooter.
+<br>You should name and save the XMLfile now.</p>
+
+<p>2. <font color="blue">Report/Page Setup</font> allow you select paper size, margins and orientation.</p>
+
+<p>3. <font color="blue">Report/Default font and color</font> allow you select the initial font for text controls, and color for text and line controls.</p>
+
+<p>4. <font color="blue">Report/Bands</font> allow you select the bands you want in your report (to resize a band drag the band separator).</p>
+
+<p>5. <font color="blue">Report/Test Data</font> put some test data that will allow you to preview the report in design mode.
+<br>There are 3 types of data:
+<br>- mCommon - a Map&lt;String, String&gt; with pairs key-value. The keys will be the same at runtime, but the values will change.
+<br>These values can be used in any band.
+<br>- columnNames - a String[] with the column names, used only in design mode to identify columns by name.
+<br>- lData - a List&lt;String[]&gt; with 'lines' (String[]) that contain table data that will be changed at runtime.
+<br>Values can be used ONLY in detail Band or summary Band.
+<br>of course 'columnNames' has the same length and order as every 'line' in lData.
+<br><font color="red">ATTENTION</font> - if you modify MapKeys or columnNames later you will have to modify them to all controls that uses them!</p>
+
+<p>6. <font color="blue">RightClick</font> inside a band to add controls</p>
+
+<p>7. <font color="blue">Click</font> to select control, ShiftClick to multiselect, Drag, starting from free space, to select controls.
+<br>Drag, or use arrow keys, to move controls.
+<br>Drag handlers, or Shift + arrow keys, to resize control.
+<br>Use menu Format to arrange controls.
+</p>
+
+<p>8. <font color="blue">DubleClick</font> control to edit properties:</p>
+<br>
+<p>for TextControl</p>
+Text source
+<br>Text - the exact text to print.
+<br>Common - from Map mCommon, the Key of the Value to print.
+<br>Data - from List&lt;String[]&gt; lData, the columnName to print in detail band.
+<br>Report - the name of the ReportVariable to print.
+<br>Numeric value - if the string to print represent a number (if number length &gt; control width, will replace printed value with '...').
+<br>text fields in Summary band will print the SUM of the column values in lData (converting String to Number).
+<br>...
+<br>
+<p>for ImageControl</p>
+Text source
+<br>Text - the exact image source fileName.
+<br>Common - from Map mCommon, the Key of the Value that contain image source fileName (not in design mode).
+<br>Data - from List&lt;String[]&gt; lData, the columnName that contain image source fileName (not in design mode).
+<br>If source and frame are different sizes:
+<br>CLIP_CONTENTS - print only the part of the image that fit into frame.
+<br>SCALE_FILL_THE_FRAME - scale image to fill the frame.
+<br>SCALE_RETAIN_SHAPE - scale image to fit entirely in the frame, no deformations.
+<br>
+<p>for LineControl</p>
+Line type can be:
+<br>line (with end type:'CAP_SQUARE', 'CAP_ROUND', 'CAP_BUTT'), flip - reverse angle.
+<br>rectangle (with join type:'JOIN_MITTER', 'JOIN_ROUND', 'JOIN_BEVEL')
+<br>...
+
+<p>9. <font color="blue">Report/Preview</font> to see the report containing test data</p>
+preview command save the report to a xml file.
+
+<p>10. <font color="blue">at runtime</font>
+<br>add SimpleJavaReport.jar to your projectLibraries;
+<br>create a Map with the same keys as mCommon but with desired values;
+<br>create a List&lt;String[]&gt; and populate it with desired values (in columnNames order from XML reportFile);
+<br> create an instance of JavaReport (all parameters can have null values) and preview or print the report;
+<br>if mCommon or lData are not null, they will replace design-time test values.
+<br>if numeFisXML is null or wrong you will preview or print an empty page.
+<br>
+<br>Example:
+<hr>
+<font face="Courier New">
+import dorel.simplejavareport.report.JavaReport;
+<br>
+<br>Map&lt;String, String&gt; mCommon = new HashMap&lt;&gt;();
+<br>mCommon.put("DesignTimeKey", "RuntimeValue");
+<br>...
+<br>List&lt;String[]&gt; lData = new ArrayList&lt;&gt;();
+<br>String[] line1 = {"Col1 runtimeValue", "Col2 runtimeValue", "Col2 runtimeValue", "Col3 runtimeValue", ...};
+<br>lData.add(line1);
+<br>...
+<br>JavaReport jr=new JavaReport(parentFrame, numeFisXML, mCommon, lData);
+<br>jr.preview();
+<br>// or
+<br>jr.print();
+<br>...
+</font>
+<hr>
+<br>Support: dorel1958@gmail.com
+</body>
+</html>

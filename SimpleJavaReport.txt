@@ -1,0 +1,34 @@
+versiune de generare HTML - cu table Structure (modelul de la rlsv) - poate pt versiunea 2
+
+ de pus querry ca sursa de date - am pus deja intrarea in meniu
+
+Ordine - Poze. linii, text
+Bring to front la imagine nu corespunde cu cel din Preview
+zOrder - bringToFront merge, sendToBack nuPrea
+cand dau un click pe mai multe etichete suprapuse le selecteaza pe toate - practic nu pot redimensiona o eticheta daca handlerul ei e pe alta eticheta
+
+
+am avut o situatie in care un text nu a fost tiparit cand erau si imagini pe acolo???
+
+
+unele iconuri nu sunt transparente - paint-ul nu face culori transparente
+
+
+de scris Help-ul
+
+
+in grid merge cam urat la intrarea intr-o celula (poate ar arata mai frumos daca ar selecta textul existent)
+
+
+nu pot copia controale dintr-o aplicatie intr-o alta instanta a ei ce ruleaza in paralel
+(probabil datorita faptului ca nu am aceeasi instanta a clasei DataFlavor)
+
+
+de revazut ce se intampla cu redimensionarea imaginii in Designer in ContentPanel (parca a inceput sa mearga)
+se pare ca e ceva pe la ReportContent.getMyPreferredSize()!
+
+
+la C# - sa nu mai tina seama de numele benzii, ci de proprietatile ei
+
+
+0744639803
